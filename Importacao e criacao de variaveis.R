@@ -42,4 +42,3 @@ write.csv(Centil_RB1, "C:/Users/izabe/Desktop/Github/Distribuicao_de_renda/Centi
 write.csv(Centil_RB2, "C:/Users/izabe/Desktop/Github/Distribuicao_de_renda/Centil_RB2.csv")
 
 
-
