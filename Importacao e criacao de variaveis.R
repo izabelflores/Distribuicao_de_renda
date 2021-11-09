@@ -40,12 +40,22 @@ Centil2 <- Centil2 %>%
   ) %>% 
   mutate(Centil = rowSums(.[5:7], na.rm = TRUE))
 
-Centil3 <- Centil2 %>% 
+Centil2 <- Centil2 %>% 
   dplyr::select( -(Centil_1:Centil_3)) %>% 
   dplyr::select(Ano, Local, Tipo_de_renda, Nível, Centil, everything()) %>% 
   dplyr::select(-`X1`)
 
+#%% Variaveis acumuladas
 
+Centil2 <- Centil2 %>% 
+  group_by(Local, Ano, Tipo_de_renda) %>% 
+  mutate(Quantidade_de_Contribuintes_ACM = cumsum(Quantidade_de_Contribuintes),
+         Soma_da_Renda_do_Centil_ACM = cumsum(Soma_da_Renda_do_Centil),
+         Rendim_Suj_a_Tribut_Exclusiva_ACM = cumsum(Rendim_Suj_a_Tribut_Exclusiva),
+         Lucros_e_dividendos_ACM = cumsum(Lucros_e_dividendos),
+         Rendim_Socio_Titular_ME_EPP_Opt_SIMPLES_ACM = cumsum(Rendim_Socio_Titular_ME_EPP_Opt_SIMPLES),
+         Outros_Rendimentos_Isentos_ACM = cumsum(Outros_Rendimentos_Isentos)
+         )
 
 #%% Dividir para exportar
 
