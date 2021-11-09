@@ -6,14 +6,13 @@ options(scipen=999)
 
 #%% Importar
 
-Centil <- read_xlsx("C:/Users/izabe/Desktop/centis_2013_2020.xlsx",
-                    sheet = "centil",
+Centil <- read_csv("centis_2006_2020.csv",
                     skip=0,
                     col_names = TRUE)
 
 #%% Criando variaveis
 
-Centil <- Centil %>% mutate(Rendimentos_Isentos = Lucros_e_dividendos +
+Centil2 <- Centil %>% mutate(Rendimentos_Isentos = Lucros_e_dividendos +
                               Rendim_Socio_Titular_ME_EPP_Opt_SIMPLES +
                               Outros_Rendimentos_Isentos,
                             
@@ -28,6 +27,25 @@ Centil <- Centil %>% mutate(Rendimentos_Isentos = Lucros_e_dividendos +
                               Moveis + 
                               Financeiros +
                               Outros_Bens_e_Direitos) 
+
+#%% coluna de centil
+
+Centil2 <- Centil2 %>% 
+  mutate(Centil_2 = Centil_2*0.1 + 99,
+         Centil_3 = Centil_3*0.01 + 99.9,
+         
+         Nível = if_else(!is.na(Centil_1), "Centil", 
+                         if_else(!is.na(Centil_2), "Centesimo superior",
+                                 "Milésimo Superior"))
+  ) %>% 
+  mutate(Centil = rowSums(.[5:7], na.rm = TRUE))
+
+Centil3 <- Centil2 %>% 
+  dplyr::select( -(Centil_1:Centil_3)) %>% 
+  dplyr::select(Ano, Local, Tipo_de_renda, Nível, Centil, everything()) %>% 
+  dplyr::select(-`X1`)
+
+
 
 #%% Dividir para exportar
 
