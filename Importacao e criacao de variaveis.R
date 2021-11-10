@@ -34,7 +34,7 @@ Centil2 <- Centil2 %>%
   mutate(Centil_2 = Centil_2*0.1 + 99,
          Centil_3 = Centil_3*0.01 + 99.9,
          
-         Nível = if_else(!is.na(Centil_1), "Centil", 
+         Nivel = if_else(!is.na(Centil_1), "Centil", 
                          if_else(!is.na(Centil_2), "Centesimo superior",
                                  "Milésimo Superior"))
   ) %>% 
@@ -42,7 +42,7 @@ Centil2 <- Centil2 %>%
 
 Centil2 <- Centil2 %>% 
   dplyr::select( -(Centil_1:Centil_3)) %>% 
-  dplyr::select(Ano, Local, Tipo_de_renda, Nível, Centil, everything()) %>% 
+  dplyr::select(Ano, Local, Tipo_de_renda, Nivel, Centil, everything()) %>% 
   dplyr::select(-`X1`)
 
 #%% Variaveis acumuladas
@@ -59,9 +59,9 @@ Centil2 <- Centil2 %>%
 
 #%% Dividir para exportar
 
-Centil_RTB <- Centil %>% filter(Tipo_de_renda == "RTB")
-Centil_RB1 <- Centil %>% filter(Tipo_de_renda == "RB1")
-Centil_RB2 <- Centil %>% filter(Tipo_de_renda == "RB2")
+Centil_RTB <- Centil2 %>% filter(Tipo_de_renda == "RTB")
+Centil_RB1 <- Centil2 %>% filter(Tipo_de_renda == "RB1")
+Centil_RB2 <- Centil2 %>% filter(Tipo_de_renda == "RB2")
 
 #%% salvando em CSV
 
