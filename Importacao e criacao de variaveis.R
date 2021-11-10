@@ -45,6 +45,11 @@ Centil2 <- Centil2 %>%
   dplyr::select(Ano, Local, Tipo_de_renda, Nivel, Centil, everything()) %>% 
   dplyr::select(-`X1`)
 
+#%% Filtrar só centil
+
+Centil2 <- Centil2 %>% 
+  filter(Nivel == "Centil")
+
 #%% Variaveis acumuladas
 
 Centil2 <- Centil2 %>% 
