@@ -88,3 +88,5 @@ Centil_RB2_2 <- Centil_RB2_2 %>%
          Imoveis, Moveis, Financeiros, 
          Outros_Bens_e_Direitos, Dividas_e_Onus,
          )
+
+write.csv(Centil_RB2_2, "C:/Users/izabe/Desktop/Github/Distribuicao_de_renda/Centil_RB2_mais.csv")
