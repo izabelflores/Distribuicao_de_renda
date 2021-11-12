@@ -27,21 +27,28 @@ Centil_RB2_2 <- Centil_RB2 %>%
 
 #%% ordenando data
 
-Centil_RB2_3 <- Centil_RB2_2 %>% 
+Centil_RB2_2 <- Centil_RB2_2 %>% 
   select(-X1)
 
-Centil_RB2_3 <- Centil_RB2_3 %>% 
-  select(Ano, Local, Tipo_de_renda, Nivel, Centil, # keys
+Centil_RB2_2 <- Centil_RB2_2 %>% 
+  select(
+        # keys
+         Ano, 
+         Local, 
+         Tipo_de_renda, 
+         Nivel, 
+         Centil,
          
+         # contribuintes
          Quantidade_de_Contribuintes, 
          Quantidade_de_Contribuintes_ACM,
          
          # rendas
-         `Limite_superior_de Renda_do_Centil`,
          Soma_da_Renda_do_Centil,
          Soma_da_Renda_do_Centil_ACM,
          Renda_Acumulada_do_Centil, # ver igualdade
          Media_da_Renda_do_Centil, # fazer acumulado
+         `Limite_superior_de Renda_do_Centil`,
          
          # tributacao exclusiva
          Rendim_Suj_a_Tribut_Exclusiva, 
@@ -63,7 +70,6 @@ Centil_RB2_3 <- Centil_RB2_3 %>%
          Renda_Tributabel_Bruta,
          Renda_Tributabel_Bruta_ACM, 
          
-         
          # despesas dedutiveis
          Despesas_Dedutiveis,
          Previdencia, 
@@ -75,11 +81,10 @@ Centil_RB2_3 <- Centil_RB2_3 %>%
          
          # imposto
          Imposto_Devido, 
+         Imposto_Devido_ACM,
          
          # bens e direitos
          Bens_e_Direitos, 
          Imoveis, Moveis, Financeiros, 
          Outros_Bens_e_Direitos, Dividas_e_Onus,
          )
-
-# obs: fazer outros acumulados e pesquisar o que sao os impostos devidos

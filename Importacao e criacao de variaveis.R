@@ -59,8 +59,8 @@ Centil2 <- Centil2 %>%
          Rendim_Suj_a_Tribut_Exclusiva_ACM = cumsum(Rendim_Suj_a_Tribut_Exclusiva),
          Lucros_e_dividendos_ACM = cumsum(Lucros_e_dividendos),
          Rendim_Socio_Titular_ME_EPP_Opt_SIMPLES_ACM = cumsum(Rendim_Socio_Titular_ME_EPP_Opt_SIMPLES),
-         Outros_Rendimentos_Isentos_ACM = cumsum(Outros_Rendimentos_Isentos)
-         )
+         Outros_Rendimentos_Isentos_ACM = cumsum(Outros_Rendimentos_Isentos),
+         Imposto_Devido_ACM = cumsum(Imposto_Devido))
 
 #%% Dividir para exportar
 
